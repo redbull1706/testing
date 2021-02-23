@@ -1,0 +1,23 @@
+Aufgabenstellung:
+==============================================
+*Entwickle eine Konsolenapplikation (Ein ausgabe in IDE-Console bzw. cmd), mit der SEPA-Zahlungen innerhalb von Österreich erfasst werden können.
+	- für cmd test müsste die applikation dann als jar gebaut und zur Verfügung gestellt werden
+	- für beide möglichen Wege(IDE bzw. CMD) müssen dementsprechende Aufforderungen der Eingabe wie zB. welche Aktion möchten sie ausführen(zB. Durchgeführte Überweisungen anzeigen oder Überweisung durchführen)
+		sowie  Ausgabe (zB. Überweisung in der Höhe von €123 von XY zu XZ durchgeführt) berücksichtigt werden    
+*Als Auftraggeber dürfen nur Konten der eigenen Bank verwendet werden.
+*Es sollten sowohl formal richtige Zahlungen als auch abgewiesene in einem seperaten File gespeichert werden.
+	- bei abgelehnten sollte auch noch der Ablehnungsgrund angeführt werden 
+*Alle anderen Fälle sind mit Fehlern abzulehnen 
+
+*Neben der Erfassung soll auch die Möglichkeit geschaffen werden, aller erfassten bzw. abgelehnten Zahlungen als Liste auszugeben.
+	-Dies sollte so realisiert werden, dass die ausgeführten bzw. abgelehnten Zahlungen in ein File geschrieben werden wo diese dann 
+		auch durch eine bereitgestellte Funktion wieder ausgegeben werden können.(z.B. mit java.nio und csv) um eine Datenbank zu simulieren
+*Idealerweise sollten gängige JavaProgrammierrichtlinien (z.B. "Clean Code", "Design Patterns", ...) berücksichtigt werden	
+
+Lösungsbereitstellung:
+==============================================		
+*Lösung muss ins git repository als eigener Branch mit dem Namen "testing_Vorname_Nachname" committed werden, 
+	wobei immer nur die ersten drei Buchstaben von Vor- bzw. Nachname verwendet werden sollten
+*Fragen können jederzeit über den bekanntgegebenen webex-channel gestellt werden bzw. können auch logische Annahmen getroffen werden
+	-dazu muss uns eine gültige Emailadresse genannt werden
+*Fachliche Beschreibung siehe Fachliche_Beschreibung.pdf
