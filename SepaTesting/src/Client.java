@@ -24,7 +24,6 @@ public class Client {
         List<Bank> banks = new ArrayList<>();
 
         try {
-            /* TODO: change to relative path */
             Path path = Paths.get(pathToCsv);
             List<String> lines = Files.readAllLines(path);
 
@@ -53,7 +52,7 @@ public class Client {
 
     public static void main(String[] args) {
         /* preliminary work to have some banks ready for use for users */
-        List<Bank> banks = setupBanks("F:/IdeaProjects/ARZ_testing_local/DB/Bank.csv", ";");
+        List<Bank> banks = setupBanks("DB/Bank.csv", ";");
 
         User user = new User("AT611234500234573201", "Max Mustermann", "Musterstraße 10");
         Bank bank = getBankOfUser(user, banks);

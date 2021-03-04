@@ -13,10 +13,9 @@ public class FileIO {
 
 
     public FileIO() {
-        /* TODO: change to relative path */
-        this.pathSuccessfulTransactions = "F:/IdeaProjects/ARZ_testing/DB/SuccessfulTransactions.csv";
-        this.pathFailedTransactions = "F:/IdeaProjects/ARZ_testing/DB/FailedTransactions.csv";
-        this.pathAllTransactions = "F:/IdeaProjects/ARZ_testing/DB/AllTransactions.csv";
+        this.pathSuccessfulTransactions = "DB/SuccessfulTransactions.csv";
+        this.pathFailedTransactions = "DB/FailedTransactions.csv";
+        this.pathAllTransactions = "DB/AllTransactions.csv";
     }
 
 
@@ -24,7 +23,6 @@ public class FileIO {
         List<String> transactions = new ArrayList<>();
 
         try {
-            /* TODO: change to relative path */
             Path path = Paths.get(this.pathAllTransactions);
             List<String> lines = Files.readAllLines(path);
 
@@ -49,44 +47,27 @@ public class FileIO {
         return transactions;
     }
 
-    public void writeSuccessfulTransaction(String from_user, String to_user, double amount) {
-        String data = String.join(";", from_user, to_user, String.valueOf(amount)) + "\n";
-
+    private void writeTransaction(String filepath, String data, StandardOpenOption option) {
         try {
-            /* TODO: change to relative path */
-            Path path = Paths.get(this.pathSuccessfulTransactions);
-            Files.write(path, data.getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            /* TODO: change to relative path */
-            Path path = Paths.get(this.pathAllTransactions);
-            Files.write(path, data.getBytes(), StandardOpenOption.APPEND);
+            Path path = Paths.get(filepath);
+            Files.write(path, data.getBytes(), option);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void writeSuccessfulTransaction(String from_user, String to_user, double amount) {
+        String data = String.join(";", from_user, to_user, String.valueOf(amount)) + "\n";
+
+        writeTransaction(this.pathSuccessfulTransactions, data, StandardOpenOption.APPEND);
+        writeTransaction(this.pathAllTransactions, data, StandardOpenOption.APPEND);
+    }
+
     public void writeFailedTransaction(String from_user, String to_user, double amount, String reason) {
         String data = String.join(";", from_user, to_user, String.valueOf(amount), reason) + "\n";
 
-        try {
-            /* TODO: change to relative path */
-            Path path = Paths.get(this.pathFailedTransactions);
-            Files.write(path, data.getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            /* TODO: change to relative path */
-            Path path = Paths.get(this.pathAllTransactions);
-            Files.write(path, data.getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writeTransaction(this.pathFailedTransactions, data, StandardOpenOption.APPEND);
+        writeTransaction(this.pathAllTransactions, data, StandardOpenOption.APPEND);
     }
 
     public static void main(String[] args) {
